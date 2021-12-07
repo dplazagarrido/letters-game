@@ -38,7 +38,7 @@ const LettersLayout = ({
       <TouchableOpacity
         style={[
           styles.touchableOpacity,
-          {backgroundColor: item.state ? 'green' : 'orangered'},
+          {backgroundColor: item.state ? '#6BB333' : '#F7872F'},
         ]}
         onPress={() => handlePressLetter(item)}>
         <Text style={styles.text}> {item.letter} </Text>
@@ -65,14 +65,14 @@ const LettersLayout = ({
       </View>
       <View style={styles.input}>
         <TextInput
-          style={[styles.textInput, {color: matchWord ? 'green' : 'red'}]}
+          style={[styles.textInput, {color: matchWord ? '#6BB333' : 'red'}]}
           value={`${word}`}
         />
         {!word ? (
           <></>
         ) : (
           <Text
-            style={[styles.textValid, {color: matchWord ? 'green' : 'red'}]}>
+            style={[styles.textValid, {color: matchWord ? '#6BB333' : 'red'}]}>
             {matchWord ? 'Valid' : 'Invalid'}
           </Text>
         )}
@@ -94,7 +94,7 @@ const styles = {
     alignItems: 'center',
     borderRadius: 20,
     borderWidth: 2,
-    borderColor: 'orange',
+    borderColor: '#970000',
   },
   gridView: {
     alignItems: 'center',
