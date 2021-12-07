@@ -1,14 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {
-  Text,
-  View,
-  FlatList,
-  Dimensions,
-  TouchableOpacity,
-  TextInput,
-  Button,
-} from 'react-native';
+import {Text, View, FlatList, Dimensions, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 
 const propTypes = {
@@ -48,14 +40,16 @@ const LettersLayout = ({
   };
   return (
     <View style={{height: ScreenHeight}}>
-      <View style={styles.button}>
-        <Button
-          title="Clear Word"
-          color={'grey'}
-          onPress={() => handleCleanWord()}
-          disabled={word !== '' ? false : true}
-        />
-      </View>
+      <TouchableOpacity
+        style={styles.touchableOpacityClear}
+        onPress={() => handleCleanWord()}>
+        <View style={styles.viewClear}>
+          <Text style={styles.textClearWord}>Clear Word</Text>
+          <View style={styles.button}>
+            <Text style={styles.textX}>X</Text>
+          </View>
+        </View>
+      </TouchableOpacity>
       <View style={styles.gridView}>
         <FlatList
           data={lettersData}
@@ -65,12 +59,10 @@ const LettersLayout = ({
         />
       </View>
       <View style={styles.input}>
-        <TextInput
-          style={[styles.textInput, {color: matchWord ? '#6BB333' : 'red'}]}
-          value={`${word}`}
-          editable={false}
-          selectTextOnFocus={false}
-        />
+        <Text
+          style={[styles.textInput, {color: matchWord ? '#6BB333' : 'red'}]}>
+          {word}
+        </Text>
         {!word ? (
           <></>
         ) : (
@@ -90,8 +82,8 @@ const styles = {
   touchableOpacity: {
     width: DeviceWidth * 0.2,
     height: DeviceWidth * 0.2,
-    marginBottom: 10,
-    marginLeft: 10,
+    marginBottom: 5,
+    marginLeft: 5,
     marginTop: 10,
     justifyContent: 'center',
     alignItems: 'center',
@@ -102,7 +94,7 @@ const styles = {
   gridView: {
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: 20,
+    margin: 20,
   },
   input: {
     height: 70,
@@ -112,7 +104,8 @@ const styles = {
     marginHorizontal: 12,
     marginTop: DeviceWidth * 0.1,
     display: 'flex',
-    flexDirection: 'column',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
   },
   text: {
     color: 'white',
@@ -122,15 +115,39 @@ const styles = {
   textInput: {
     fontWeight: 'bold',
     fontSize: 30,
+    alignSelf: 'center',
   },
   textValid: {
     fontSize: 20,
-    marginTop: 10,
     textAlign: 'center',
+    alignSelf: 'center',
   },
   button: {
-    borderRadius: 20,
-    padding: 10,
+    borderRadius: 50,
+    backgroundColor: 'lightgrey',
+    height: 50,
+    width: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  textX: {
+    fontSize: 30,
+    color: 'white',
+  },
+  textClearWord: {
+    alignSelf: 'center',
+    justifyContent: 'center',
+    fontSize: 20,
+    marginHorizontal: 20,
+    color: 'lightgrey',
+  },
+  touchableOpacityClear: {
+    alignItems: 'flex-end',
+    paddingHorizontal: 30,
+    paddingTop: 10,
+  },
+  viewClear: {
+    flexDirection: 'row',
   },
 };
 
