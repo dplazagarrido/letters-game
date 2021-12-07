@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import lettersData from '../../files/test-board-1.json';
+import lettersData from '../../files/test-board-2.json';
 import dictionaryData from '../../files/dictionary.json';
 import LettersLayout from './letters.layout';
 
@@ -26,7 +26,7 @@ const LettersScreen = () => {
     const temporaryWord = arrayWord.join('');
     setWord(temporaryWord);
 
-    dictionaryData.words.find(item => item === temporaryWord.toLowerCase())
+    dictionaryData.words.find(i => i === temporaryWord.toLowerCase())
       ? setMatchWord(true)
       : setMatchWord(false);
     setWordArray(arrayWord);

@@ -40,6 +40,7 @@ const LettersLayout = ({
           styles.touchableOpacity,
           {backgroundColor: item.state ? '#6BB333' : '#F7872F'},
         ]}
+        disabled={item.state}
         onPress={() => handlePressLetter(item)}>
         <Text style={styles.text}> {item.letter} </Text>
       </TouchableOpacity>
@@ -67,6 +68,8 @@ const LettersLayout = ({
         <TextInput
           style={[styles.textInput, {color: matchWord ? '#6BB333' : 'red'}]}
           value={`${word}`}
+          editable={false}
+          selectTextOnFocus={false}
         />
         {!word ? (
           <></>
@@ -107,13 +110,13 @@ const styles = {
     paddingHorizontal: 10,
     fontWeight: 'bold',
     marginHorizontal: 12,
-    marginTop: DeviceWidth * 0.15,
+    marginTop: DeviceWidth * 0.1,
     display: 'flex',
     flexDirection: 'column',
   },
   text: {
     color: 'white',
-    fontSize: 30,
+    fontSize: 40,
     fontWeight: 'bold',
   },
   textInput: {
